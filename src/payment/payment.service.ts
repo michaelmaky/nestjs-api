@@ -48,6 +48,7 @@ export class PaymentService {
     if (order?.charge.totalAmount !== paymentCheckoutDto.amount)
       throw new BadRequestException('order amount not match');
 
+    // checkout
     const checkoutResult = await this.checkoutByStripe(
       process.env.STRIPE_SECRET_KEY,
       {
@@ -92,13 +93,17 @@ export class PaymentService {
         .exec();
       return updatePayment;
     } else {
-      const paymentModel: PaymentCreateDto = {
+      const transactions: Array<PaymentTransactionDto> = [];
+      transactions.push(transaction);
+
+      const newPayment: PaymentCreateDto = {
         date: new Date(),
-        // PAID
+        amount: paymentCheckoutDto.amount,
         status: 100,
+        transactions: transactions,
       };
-      paymentModel.transactions.push(transaction);
-      updatePayment = await this.create(paymentModel);
+
+      updatePayment = await this.create(newPayment);
     }
 
     // TODO, may update order status later
