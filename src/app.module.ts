@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { MongodbHelper } from 'src/core';
 import { OrderModule } from './order/order.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { OrderModule } from './order/order.module';
       },
     ),
     OrderModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

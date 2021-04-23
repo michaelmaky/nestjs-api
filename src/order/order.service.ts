@@ -28,7 +28,7 @@ export class OrderService {
   }
 
   public async findOne(_id: string) {
-    return await this.orderRepository.find({ _id: _id }).exec();
+    return await this.orderRepository.findOne({ _id: _id }).exec();
   }
 
   public async update(_id: string, orderUpdateDto: OrderUpdateDto) {
