@@ -31,7 +31,8 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6",
-    "mongoose": "^5.12.5"
+    "mongoose": "^5.12.5",
+    "stripe": "^8.145.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.6.0",
@@ -47,6 +48,7 @@
     "@typescript-eslint/parser": "^4.19.0",
     "body-parser": "^1.19.0",
     "class-validator": "^0.13.1",
+    "class-transformer": "^0.4.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
