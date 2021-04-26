@@ -1,7 +1,19 @@
 {
-    "workbench.settings.editor": "json",
-    "editor.codeActionsOnSave": {
-        // For ESLint
-        "source.fixAll.eslint": true
-    }
+  "workbench.settings.editor": "json",
+  // "editor.formatOnSave": true,
+  // "editor.formatOnPaste": false,
+  // "eslint.lintTask.enable": true,
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  //   "editor.formatOnSave": true
+  // },
+  "editor.codeActionsOnSave": {
+    // For ESLint
+    "source.fixAll.eslint": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
 }

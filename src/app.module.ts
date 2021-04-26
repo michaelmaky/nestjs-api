@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
+// graphql
+import { GraphQLModule } from '@nestjs/graphql';
+import { GraphQLModuleFactory } from './core/graphql';
+// mongodb
+import { MongooseModule, getConnectionToken } from '@nestjs/mongoose';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
-import { MongooseModule } from '@nestjs/mongoose';
 
 import { MongodbHelper } from 'src/core';
 import { OrderModule } from './order/order.module';
@@ -39,6 +43,11 @@ import { PaymentModule } from './payment/payment.module';
         },
       },
     ),
+    // GraphQL setup
+    GraphQLModule.forRootAsync({
+      inject: [getConnectionToken('Database')],
+      useFactory: GraphQLModuleFactory,
+    }),
     OrderModule,
     PaymentModule,
   ],
