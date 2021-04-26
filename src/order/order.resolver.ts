@@ -23,21 +23,21 @@ export class OrderResolver {
     return this.orderService.findById(id);
   }
 
-  // @Query()
-  // async getOrders(@Args('query') query: OrderSearchDto) {
-  //   return this.orderService.find(query);
-  // }
+  @Query()
+  async getOrders(@Args('query') query: OrderSearchDto) {
+    return this.orderService.find(query);
+  }
 
-  // @Mutation()
-  // async createOrder(@Args('orderCreateDto') orderCreateDto: OrderCreateDto) {
-  //   return this.orderService.create(orderCreateDto);
-  // }
+  @Mutation()
+  async createOrder(@Args('orderCreateDto') orderCreateDto: OrderCreateDto) {
+    return this.orderService.create(orderCreateDto);
+  }
 
-  // @Mutation()
-  // async updateOrder(
-  //   @Args('id') id: string,
-  //   @Args('orderUpdateDto') orderUpdateDto: OrderUpdateDto,
-  // ) {
-  //   return this.orderService.update(id, orderUpdateDto);
-  // }
+  @Mutation()
+  async updateOrder(
+    @Args('id') id: string,
+    @Args('orderUpdateDto') orderUpdateDto: OrderUpdateDto,
+  ) {
+    return this.orderService.update(id, orderUpdateDto);
+  }
 }

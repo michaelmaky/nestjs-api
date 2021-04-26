@@ -1,5 +1,15 @@
 scalar Date
 
+type OrderContact {
+  name: String
+  phone: String
+}
+
+type OrderCharge {
+  currency: String
+  totalAmount: Float
+}
+
 type Order {
   _id: ID!
   orderNo: String!
@@ -13,6 +23,48 @@ type Order {
   updatedAt: Date
 }
 
+input OrderContactInput {
+  name: String
+  phone: String
+}
+
+input OrderChargeInput {
+  currency: String
+  totalAmount: Float
+}
+
+input OrderCreateInput {
+  date: Date
+  consignee: OrderContactInput
+  contactAddress: String
+  charge: OrderChargeInput!
+  remarks: String
+}
+
+input OrderUpdateDtoInput {
+  date: Date
+  consignee: OrderContactInput
+  contactAddress: String
+  charge: OrderChargeInput!
+  remarks: String
+}
+
+input OrderSearchInput {
+  q: String
+  dateFr: Date
+  dateTo: Date
+  consigneeName: String
+  consigneePhone: String
+  contactAddress: String
+  remarks: String
+}
+
 type Query {
   getOrder(id: ID!): Order
+  getOrders(query: OrderSearchInput): [Order]
+}
+
+type Mutation {
+  createOrder(orderCreateDto: OrderCreateInput!): Order
+  updateOrder(id: ID!, orderUpdateDto: OrderUpdateDtoInput): Order
 }
