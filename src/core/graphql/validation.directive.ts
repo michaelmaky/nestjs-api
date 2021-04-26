@@ -69,14 +69,6 @@ export class ConstraintDirective extends SchemaDirectiveVisitor {
       name: directiveName,
       locations: [DirectiveLocation.INPUT_FIELD_DEFINITION],
       args: {
-        /* todo: 更好的做法是定一个类似:GraphQLObject 的类型
-         *  error: {
-         *    code: "xxxxx",
-         *    payload: {
-         *      key: "xxxxx"
-         *    }
-         *  }
-         */
         rule: { type: GraphQLString },
         params: { type: GraphQLString },
         errorCode: {
