@@ -5,6 +5,10 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { MongodbHelper } from 'src/core';
+
+import { MailerModule } from './Mailer/mailer.module';
+
+import { IamModule } from './Iam/iam.module';
 import { OrderModule } from './order/order.module';
 import { PaymentModule } from './payment/payment.module';
 
@@ -39,6 +43,16 @@ import { PaymentModule } from './payment/payment.module';
         },
       },
     ),
+    IamModule.forRoot(process.env.CRYPTO_KEY),
+    // Mailer Module, option parameter base on MailerModuleOption
+    MailerModule.forRoot({
+      queue: {
+        isEnable: process.env.QUEUE_ENABLE === 'true',
+        hook: {
+          url: '',
+        },
+      },
+    }),
     OrderModule,
     PaymentModule,
   ],
