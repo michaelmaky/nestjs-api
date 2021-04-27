@@ -9,7 +9,7 @@ import { NestFactory } from '@nestjs/core';
 // import * as bodyParser from 'body-parser';
 import { AppModule } from './app.module';
 // import packageJson from '../package.json';
-import { GraphQLSchemaHost, Plugin } from '@nestjs/graphql';
+// import { GraphQLSchemaHost, Plugin } from '@nestjs/graphql';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,7 +19,7 @@ async function bootstrap() {
     process.env.NODE_ENV || 'development',
     process.env.PORT,
   );
-  const { schema } = app.get(GraphQLSchemaHost);
-  console.info('graphql schema', schema);
+  // const { schema } = app.get(GraphQLSchemaHost);
+  // console.info('graphql schema', schema);
 }
 bootstrap();

@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "declaration": true,
+    "declaration": false,
     "removeComments": true,
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": false,
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true
-  }
+  },
+  "ts-node": {
+    "files": true
+  },
+  "exclude": ["node_modules", "dist"]
 }

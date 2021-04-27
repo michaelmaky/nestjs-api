@@ -66,6 +66,10 @@ export class OrderService {
       query.$and.push({ contactAddress });
     }
 
+    if (query.$and && query.$and.length === 0) {
+      delete query.$and;
+    }
+
     return query;
   }
 

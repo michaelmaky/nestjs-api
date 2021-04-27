@@ -7,8 +7,8 @@ import { ConstraintDirective, ErrorTrackingExtension } from 'src/core/graphql';
 export const GraphQLModuleFactory = async (): Promise<GqlModuleOptions> => {
   return {
     cors: true,
-    typePaths: [`./**/*.gql`],
-    // typePaths: [`${__dirname}/../../**/*.gql`],
+    // typePaths: ['./src/**/*.gql'],
+    typePaths: [`${__dirname}/../../**/*.gql`],
     debug: process.env.NODE_ENV !== 'production',
     playground: process.env.NODE_ENV !== 'production',
     extensions: [() => new ErrorTrackingExtension()],
