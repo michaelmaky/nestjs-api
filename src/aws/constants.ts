@@ -1,0 +1,1 @@
+export const AWS_SERVICE_OPTIONS = 'AWS_SERVICE_OPTION';

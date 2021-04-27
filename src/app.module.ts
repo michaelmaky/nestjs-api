@@ -9,6 +9,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { MongodbHelper } from 'src/core';
+
+import { MailerModule } from './Mailer/mailer.module';
+
+import { IamModule } from './Iam/iam.module';
 import { OrderModule } from './order/order.module';
 import { PaymentModule } from './payment/payment.module';
 
@@ -47,6 +51,16 @@ import { PaymentModule } from './payment/payment.module';
     GraphQLModule.forRootAsync({
       inject: [getConnectionToken('Database')],
       useFactory: GraphQLModuleFactory,
+    }),
+    IamModule.forRoot(process.env.CRYPTO_KEY),
+    // Mailer Module, option parameter base on MailerModuleOption
+    MailerModule.forRoot({
+      queue: {
+        isEnable: process.env.QUEUE_ENABLE === 'true',
+        hook: {
+          url: '',
+        },
+      },
     }),
     OrderModule,
     PaymentModule,
