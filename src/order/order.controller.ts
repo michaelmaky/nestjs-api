@@ -4,12 +4,12 @@ import {
   Post,
   Body,
   Patch,
+  Query,
   Param,
-  Delete,
+  // Delete,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
-import { OrderCreateDto } from './dto/order.create.dto';
-import { OrderUpdateDto } from './dto/order.update.dto';
+import { OrderCreateDto, OrderSearchDto, OrderUpdateDto } from './dto';
 
 @Controller('orders')
 export class OrderController {
@@ -21,13 +21,13 @@ export class OrderController {
   }
 
   @Get()
-  findAll() {
-    return this.orderService.findAll();
+  find(@Query() query: OrderSearchDto) {
+    return this.orderService.find(query);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.orderService.findOne(id);
+    return this.orderService.findById(id);
   }
 
   @Patch(':id')
@@ -35,8 +35,8 @@ export class OrderController {
     return this.orderService.update(id, orderUpdateDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.orderService.remove(id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.orderService.remove(id);
+  // }
 }
