@@ -34,9 +34,9 @@ import { PaymentModule } from './payment/payment.module';
         isSSL: process.env.MONGODB_OPTION_SSL === 'true',
       }),
       {
-        useCreateIndex: true,
+        // useCreateIndex: true,
         useNewUrlParser: true,
-        useFindAndModify: false,
+        // useFindAndModify: false,
         useUnifiedTopology: true,
         connectionName: 'Database',
         connectionFactory: (connection) => {

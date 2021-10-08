@@ -1,4 +1,4 @@
-import { ObjectID } from 'mongodb';
+import { ObjectId } from 'mongodb';
 import { Document } from 'mongoose';
 
 import { PaymentTransaction } from './paymentTransaction.interface';
@@ -8,7 +8,7 @@ export interface Payment extends Document {
   /**
    * unique ID for document
    */
-  _id: ObjectID;
+  _id: ObjectId;
 
   /**
    * reference order
