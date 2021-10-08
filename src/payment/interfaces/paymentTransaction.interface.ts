@@ -1,7 +1,7 @@
-import { ObjectID } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 export interface PaymentTransaction {
-  _id?: ObjectID;
+  _id?: ObjectId;
 
   /**
    * transaction id

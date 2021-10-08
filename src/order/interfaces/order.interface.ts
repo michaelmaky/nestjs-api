@@ -1,4 +1,4 @@
-import { ObjectID } from 'mongodb';
+import { ObjectId } from 'mongodb';
 import { Document } from 'mongoose';
 
 import { OrderCharge } from './order.charge.inteface';
@@ -8,7 +8,7 @@ export interface Order extends Document {
   /**
    * unique ID for document
    */
-  _id: ObjectID;
+  _id: ObjectId;
 
   /**
    * generated order no.
