@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsString, MaxLength } from 'class-validator';
 
 export class OrderContactDto {
   @IsString()
@@ -7,6 +7,7 @@ export class OrderContactDto {
   name: string;
 
   @IsString()
+  @MaxLength(8)
   @ApiProperty({ description: 'consignee phone no.' })
   phone: string;
 }
