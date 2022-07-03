@@ -67,6 +67,7 @@ export class PaymentService {
 
     const transaction: PaymentTransactionDto = {
       id: checkoutResult.id,
+      date: new Date(),
       method: 'STRIPE',
       amount: paymentCheckoutDto.amount,
       // Success
@@ -85,7 +86,13 @@ export class PaymentService {
             // PAID
             status: 100,
             $push: {
-              transactions: transaction,
+              transactions: {
+                id: transaction.id,
+                date: transaction.date,
+                method: transaction.method,
+                amount: transaction.amount,
+                status: transaction.status,
+              },
             },
           },
           { new: true },
